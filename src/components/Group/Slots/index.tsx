@@ -8,22 +8,27 @@ import { StyledAction, StyledSlots } from "./style";
 
 type Props = {
   index: number;
-  slotes: string[];
+  slots: string[];
   groups: groupsProps[];
   setGroups: React.Dispatch<React.SetStateAction<groupsProps[]>>;
 };
 
-const Slots = ({ slotes, groups, setGroups, index }: Props) => {
+const Slots = ({ slots, groups, setGroups, index }: Props) => {
   const [slotValue, setValue] = useState("");
   const [addSlot, setAddSlot] = useState(false);
   return (
     <StyledSlots>
-      {slotes.map((slot, ind) => {
+      {slots.map((slot, ind) => {
         return (
           <Slot
             icon={<RemoveIcon />}
             setValue={setValue}
             value={slot}
+            OnChange={(value) => {
+              let temp = [...groups];
+              temp[index].slots[ind] = value;
+              setGroups(temp);
+            }}
             onClick={() => {
               let temp = [...groups];
               temp[index].slots.splice(ind, 1);

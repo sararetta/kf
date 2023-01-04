@@ -44,7 +44,7 @@ const Group = ({ groups, setGroups, addGroup, setAddGroup }: Props) => {
                   />
                   <Slots
                     index={index}
-                    slotes={gro.slots}
+                    slots={gro.slots}
                     groups={groups}
                     setGroups={setGroups}
                   />
